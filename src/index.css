@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/* All design tokens live here. Use only these in components. */
+@theme {
+  --font-*: initial;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+
+  --text-*: initial;
+  --text-title: 20px;
+  --text-title--line-height: 28px;
+  --text-section: 16px;
+  --text-section--line-height: 24px;
+  --text-body: 14px;
+  --text-body--line-height: 20px;
+  --text-small: 12px;
+  --text-small--line-height: 16px;
+
+  --font-weight-*: initial;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --color-*: initial;
+  --color-primary: #d92d2d;
+  --color-primary-dark: #b82222;
+  --color-primary-soft: #fdecec;
+  --color-on-primary: #ffffff;
+  --color-accent: #f97316;
+  --color-accent-light: #fb9f1c;
+  --color-accent-soft: #ffe8d1;
+  --color-canvas: #fafafa;
+  --color-surface: #ffffff;
+  --color-ink: #1c1917;
+  --color-muted: #78716c;
+  --color-line: #ece8e6;
+  --color-overlay: rgb(28 25 23 / 0.45);
+  --color-success: #15803d;
+  --color-success-soft: #e7f6ec;
+  --color-warning: #b45309;
+  --color-warning-soft: #fdf1dc;
+  --color-danger: #b91c1c;
+  --color-danger-soft: #fdeaea;
+  --color-info: #1d4ed8;
+  --color-info-soft: #e8efff;
+
+  --radius-*: initial;
+  --radius-base: 12px;
+  --radius-full: 9999px;
+
+  --shadow-*: initial;
+  --shadow-card: 0 1px 2px rgb(28 25 23 / 0.04), 0 4px 14px rgb(28 25 23 / 0.07);
+  --shadow-pop: 0 8px 28px rgb(28 25 23 / 0.16);
+}
+
+@layer base {
+  body {
+    margin: 0;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Receipt: when printing, show only the receipt, on narrow paper. */
+@media print {
+  @page {
+    margin: 6mm;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .receipt,
+  .receipt * {
+    visibility: visible;
+  }
+  .receipt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 72mm;
+    box-shadow: none;
+  }
+}
